@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}
+Member
+{% endblock %}
+
+{% block body %}
+<header class="container my-3 py-3 text-dark text-center ">
+    <h2 class="fw-bold">Edit Member </h2>
+</header>
+<div class="container">
+    <div class="card">
+        <div class="card-body mb-2">
+            <form action="/edit/{{id}}" method="post">
+                <div class="row ">
+                    <div class="col-sm-4 form-group">
+                        <label class="form-label fw-bold mb-1" for="member_name">Name *</label>
+                        <input id="member_name" type="text" name="member_name" class="form-control" value="{{response[0]}}">
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        <label class="form-label fw-bold mb-1" for="personnumber">2. Person number *</label>
+                        <input id="personnumber" type="text" name="personnumber1" class="form-control"
+                               placeholder="ÅÅMMDD-XXXX" value="{{response[1]}}">
+                    </div>
+                    <div class="col-sm-4 form-group mt-2 ">
+                        <label class="form-label fw-bold mb-1" for="phone">3. Telephone number *</label>
+                        <input id="phone" type="tel" name="phone1" class="form-control" value="{{response[2]}}">
+                    </div>
+                    <div class="col-sm-4 form-group mt-2 ">
+                        <label class="form-label fw-bold mb-1" for="address">4. Address *</label>
+                        <input id="address" type="text" name="address1" class="form-control" value="{{response[3]}}">
+                    </div>
+                    <div class="col-sm-4 form-group mt-2 ">
+                        <label class="form-label fw-bold mb-1" for="email">5. Email *</label>
+                        <input id="email" type="email" name="email1" class="form-control" value="{{response[4]}}">
+                    </div>
+                    <div class="col-sm-4 form-group mt-2 ">
+                        <label class="form-label fw-bold mb-1" for="class_name">6. Class *</label>
+                        <select class="form-control fs-6" id="class_name" name="class_name1" >
+                            <option value={{response[6]}} selected>{{response[7]}}</option>
+                            {% for class in classes %}
+                                <option value={{class[0]}}>{{class[1]}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <br/>
+                <div class="row justify-content-md-end">
+                    <div class="d-grid gap-3 col-2">
+                        <button class="btn btn-success btn-md custom" type="submit"> Confirm</button>
+                    </div>
+                    <div class="d-grid gap-3 col-2">
+                        <button class="btn btn-danger btn-md custom" type="button"><a href="/" style="text-decoration: none; color:white">Back</a></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

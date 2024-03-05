@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}
+Add class
+{% endblock %}
+
+{% block body %}
+<div class="container my-3 p-5 bg-body rounded shadow-lg">
+    <form action="/addClass" method="post">
+        <h5><b>Create new class: </b></h5>
+        <div class="mb-3 mt-3">
+            <label for="className">Add new class name: </label>
+            <input class="form-control" id="className" name="className"
+                   placeholder="Enter a class name">
+        </div>
+        <div class="mb-3">
+            <label for="class_description">Add a class description: </label>
+            <input type="text" class="form-control" id="class_description" name="class_description"
+                   placeholder="Enter a description about class: ">
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-primary mb-3">Create</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

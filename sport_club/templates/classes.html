@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}
+Class list
+{% endblock %}
+{% block body %}
+<main class="container">
+    <div class="d-flex align-items-center p-3 my-3 text-white bg-primary rounded shadow-sm">
+        <div class="lh-1">
+            <h1 class="h5 mb-0 text-white lh-1">Classes</h1>
+        </div>
+    </div>
+    <div class="accordion rounded" id="accordionExample">
+        {% for class in classes %}
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{class[0]}}"
+                        aria-expanded="true" aria-controls="{{class[0]}}">
+                    {{class[1]}}
+                </button>
+            </h2>
+            <div id="{{class[0]}}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    {{class[2]}}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="my-3 p-3 bg-body rounded shadow-sm">
+        <h6 class="border-bottom pb-2 mb-0">Recent comments</h6>
+        {% for comment in comments %}
+        <div class="d-flex text-body-secondary pt-3">
+            <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
+                 xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
+                 preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#007bff"/>
+                <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+            </svg>
+            <p class="pb-3 mb-0 small lh-sm border-bottom">
+                <strong class="d-block text-gray-dark">{{comment[1]}}</strong>
+                {{comment[3]}}
+            </p>
+        </div>
+        {% endfor %}
+        <small class="d-block text-end mt-3">
+            <a href="#">All comments</a>
+        </small>
+        <div><strong>Comments:</strong></div>
+        <form class="row g-3" action="/add_comments" method="post">
+            <div class="mb-3">
+                <label for="comment" class="visually-hidden">Comments</label>
+                <textarea rows="3" class="form-control" id="comment" name="comment"
+                          placeholder="enter your comment"></textarea>
+            </div>
+            <div class="col-auto">
+                <label for="comment_name" class="visually-hidden">Name</label>
+                <input type="text" class="form-control" id="comment_name" name="comment_name"
+                       placeholder="enter your name">
+            </div>
+            <div class="col-auto">
+                <label for="comment_email" class="visually-hidden">Email</label>
+                <input type="text" class="form-control" id="comment_email" name="comment_email"
+                       placeholder="email@example.com">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">Post</button>
+            </div>
+        </form>
+    </div>
+</main>
+
+<br>
+<br>
+
+
+{% endblock %}

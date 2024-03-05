@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}
+Member
+{% endblock %}
+
+{% block body %}
+<header class="container my-3 py-3 text-dark text-center ">
+    <h2 class="fw-bold">Create new member </h2>
+</header>
+<div class="container">
+    <div class="card">
+        <div class="card-body mb-2">
+            <form action="/add_member" method="post">
+                <div class="row ">
+                    <div class="col-sm-4 form-group">
+                        <label class="form-label fw-bold mb-1" for="name">1. First and last name *</label>
+                        <input id="name" type="text" name="name" class="form-control" placeholder="Firstname Lastname"/>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        <label class="form-label fw-bold mb-1" for="personnumber">2. Person number *</label>
+                        <input id="personnumber" type="text" name="personnumber" class="form-control"
+                               placeholder="ÅÅMMDD-XXXX"/>
+                    </div>
+                    <div class="col-sm-4 form-group mt-2 ">
+                        <label class="form-label fw-bold mb-1" for="phone">3. Telephone number *</label>
+                        <input id="phone" type="tel" name="phone" class="form-control" placeholder="07xxxxxxxx"/>
+                    </div>
+                    <div class="col-sm-4 form-group mt-2 ">
+                        <label class="form-label fw-bold mb-1" for="address">4. Address *</label>
+                        <input id="address" type="text" name="address" class="form-control"/>
+                    </div>
+                    <div class="col-sm-4 form-group mt-2 ">
+                        <label class="form-label fw-bold mb-1" for="email">5. Email *</label>
+                        <input id="email" type="email" name="email" class="form-control" placeholder="example@gmail.com"/>
+                    </div>
+                    <div class="col-sm-4 form-group mt-2 ">
+                        <label class="form-label fw-bold mb-1" for="class_name">6. Class *</label>
+                        <select class="form-control fs-6" id="class_name" name="class_name" >
+                            {% for class in classes %}
+                            <option value={{class[0]}}>{{class[1]}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <br/>
+                <div class="row justify-content-md-end">
+                    <div class="d-grid gap-3 col-2">
+                        <button class="btn btn-success btn-md custom" type="submit"> Skapa medlem</button>
+                    </div>
+                    <div class="d-grid gap-3 col-2">
+                        <button class="btn btn-danger btn-md custom" type="button"><a href="/" style="text-decoration: none; color:white">Back</a></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
