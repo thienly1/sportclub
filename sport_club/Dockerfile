@@ -1,14 +1,9 @@
 FROM python:3-alpine3.19
+WORKDIR /sport_club
+COPY requirements.txt .
 
-RUN apk add --update py2-pip
-
-COPY requirements.txt usr/src/app/
-
-RUN pip install --no-cache-dir -r /usr/src/app/requirements.txt
-
-COPY app.py /usr/src/app/
-COPY templates /usr/src/app/
+RUN pip install -r requirements.txt
 EXPOSE 5000
-CMD python3 ./usr/src/app/club.py
-
+CMD python3 ./club.py
+COPY club.py .
 
